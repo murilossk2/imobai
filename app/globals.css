@@ -1,0 +1,29 @@
+/* Diretivas Tailwind - Ignorar avisos do editor */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variáveis CSS para temas */
+:root {
+  --background: 0 0% 100%;
+  --foreground: 240 10% 3.9%;
+  --primary: 142 76% 36%;
+  --primary-foreground: 355.7 100% 97.3%;
+  --border: 240 5.9% 90%;
+}
+
+.dark {
+  --background: 240 10% 4%;
+  --foreground: 0 0% 98%;
+  --primary: 142 70% 45%;
+  --primary-foreground: 144.9 80.4% 10%;
+  --border: 240 3.7% 15.9%;
+}
+
+/* Estilos customizados */
+@layer base {
+  body {
+    /* Propriedades Tailwind */
+    @apply bg-gray-950 text-gray-100;
+  }
+}
