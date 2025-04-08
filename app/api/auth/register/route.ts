@@ -35,7 +35,7 @@ export async function POST(request: Request) {
     })
 
     // Remove a senha do objeto retornado
-    const { password: _password, ...userWithoutPassword } = user
+    const { password: userPassword, ...userWithoutPassword } = user
 
     return NextResponse.json(userWithoutPassword)
   } catch (error) {

@@ -31,7 +31,8 @@ async function getUserIdFromToken() {
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret') as JwtPayload
     return decoded.userId
-  } catch (err) {
+  } catch (error) {
+    console.error('Erro ao verificar token:', error)
     throw new Error('Token inválido')
   }
 }
