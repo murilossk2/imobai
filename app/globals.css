@@ -1,29 +1,24 @@
-/* Diretivas Tailwind - Ignorar avisos do editor */
+/* Diretivas Tailwind */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Variáveis CSS para temas */
+/* Variáveis de cores */
 :root {
-  --background: 0 0% 100%;
-  --foreground: 240 10% 3.9%;
-  --primary: 142 76% 36%;
-  --primary-foreground: 355.7 100% 97.3%;
-  --border: 240 5.9% 90%;
+  --background-color: #ffffff;
+  --foreground-color: #171717;
+  --primary-color: #22c55e;
 }
 
+/* Tema escuro */
 .dark {
-  --background: 240 10% 4%;
-  --foreground: 0 0% 98%;
-  --primary: 142 70% 45%;
-  --primary-foreground: 144.9 80.4% 10%;
-  --border: 240 3.7% 15.9%;
+  --background-color: #0a0a0a;
+  --foreground-color: #ededed;
 }
 
-/* Estilos customizados */
-@layer base {
-  body {
-    /* Propriedades Tailwind */
-    @apply bg-gray-950 text-gray-100;
-  }
+/* Estilos básicos */
+body {
+  background-color: rgb(10, 10, 10);
+  color: rgb(237, 237, 237);
+  min-height: 100vh;
 }
