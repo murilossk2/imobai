@@ -6,6 +6,19 @@ import { cookies } from 'next/headers'
 
 const prisma = new PrismaClient()
 
+interface JwtPayload {
+  userId: string
+}
+
+interface PropertyData {
+  address: string
+  area: number
+  bedrooms?: number
+  bathrooms?: number
+  parkingSpots?: number
+  description?: string
+}
+
 // Função para extrair o userId do token JWT
 async function getUserIdFromToken() {
   const cookiesList = await cookies()
@@ -16,15 +29,15 @@ async function getUserIdFromToken() {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret')
-    return (decoded as any).userId
-  } catch (error) {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret') as JwtPayload
+    return decoded.userId
+  } catch (err) {
     throw new Error('Token inválido')
   }
 }
 
 // Função para fazer a chamada à API da Perplexity
-async function getPropertyEvaluation(propertyData: any) {
+async function getPropertyEvaluation(propertyData: PropertyData) {
   const prompt = `
     Por favor, faça uma avaliação detalhada do seguinte imóvel:
     

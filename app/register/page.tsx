@@ -41,7 +41,8 @@ export default function RegisterPage() {
       }
 
       router.push('/login?registered=true')
-    } catch (err) {
+    } catch (error) {
+      console.error('Erro no registro:', error)
       setError('Erro ao criar conta')
     } finally {
       setLoading(false)

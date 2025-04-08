@@ -2,9 +2,24 @@
 
 import { useState } from 'react'
 
+interface EvaluationResult {
+  id: string
+  address: string
+  area: number
+  bedrooms: number
+  bathrooms: number
+  parkingSpots: number
+  description?: string
+  result: {
+    evaluation: string
+  }
+  userId: string
+  createdAt: string
+}
+
 export default function DashboardPage() {
   const [loading, setLoading] = useState(false)
-  const [result, setResult] = useState<any>(null)
+  const [result, setResult] = useState<EvaluationResult | null>(null)
   const [error, setError] = useState('')
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -36,7 +51,8 @@ export default function DashboardPage() {
 
       const evaluation = await res.json()
       setResult(evaluation)
-    } catch (err) {
+    } catch (error) {
+      console.error('Erro:', error)
       setError('Erro ao processar sua solicitação')
     } finally {
       setLoading(false)

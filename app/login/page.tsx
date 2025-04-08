@@ -31,7 +31,8 @@ export default function LoginPage() {
       }
 
       router.push('/dashboard')
-    } catch (err) {
+    } catch (error) {
+      console.error('Erro de login:', error)
       setError('Credenciais inválidas')
     } finally {
       setLoading(false)
